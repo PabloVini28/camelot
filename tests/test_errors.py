@@ -59,7 +59,8 @@ def test_no_tables_found_warnings_suppressed(testdir):
     with warnings.catch_warnings():
         # the test should fail if any warning is thrown
         warnings.simplefilter("error")
-        camelot.read_pdf(filename, suppress_stdout=True)
+        tables = camelot.read_pdf(filename, suppress_stdout=True)
+    assert len(tables) == 0
 
 
 def test_no_password(testdir):
