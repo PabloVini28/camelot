@@ -25,8 +25,9 @@ def test_unknown_flavor(foo_pdf):
 
 def test_input_kwargs(foo_pdf):
     message = "columns cannot be used with flavor='lattice'"
-    with pytest.raises(ValueError, match=message):
+    with pytest.raises(ValueError) as excinfo:
         camelot.read_pdf(foo_pdf, columns=["10,20,30,40"])
+    assert message in str(excinfo.value)
 
 
 def test_pdf_without_pdf_extension(testdir, tmp_path):
