@@ -132,10 +132,11 @@ def test_lattice_no_tables_on_page(testdir):
 
 def test_lattice_unknown_backend(foo_pdf):
     message = "Unknown backend 'mupdf' specified. Please use 'pdfium', 'poppler' or 'ghostscript'."
-    with pytest.raises(NotImplementedError, match=message):
+    with pytest.raises(NotImplementedError) as excinfo:
         tables = camelot.read_pdf(
             foo_pdf, flavor="lattice", backend="mupdf", use_fallback=False
         )
+    assert message in str(excinfo.value)
 
 
 def test_lattice_no_convert_method(foo_pdf):
