@@ -63,13 +63,14 @@ def test_lattice_engine_accepts_valid_values(eng):
     assert Lattice(engine=eng).engine == eng
 
 
-def test_lattice_engine_validation():
+@pytest.mark.parametrize("bad", ["opencv", "auto"])
+def test_lattice_engine_rejects_invalid_values(bad):
     from camelot.parsers.lattice import Lattice
 
     # Invalid values rejected at construction.
-    for bad in ("opencv", "auto"):
-        with pytest.raises(ValueError, match="engine must be"):
-            Lattice(engine=bad)
+    with pytest.raises(ValueError) as excinfo:
+        Lattice(engine=bad)
+    assert "engine must be" in str(excinfo.value)
 
 
 def test_lattice_default_engine_is_combined():
