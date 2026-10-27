@@ -74,8 +74,9 @@ def test_no_password(testdir):
 def test_bad_password(testdir):
     filename = os.path.join(testdir, "health_protected.pdf")
     message = "File has not been decrypted"
-    with pytest.raises(Exception, match=message):
+    with pytest.raises(Exception) as excinfo:
         camelot.read_pdf(filename, password="wrongpass")
+    assert message in str(excinfo.value)
 
 
 def test_stream_equal_length(foo_pdf):
