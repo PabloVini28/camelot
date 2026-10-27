@@ -205,5 +205,6 @@ def test_ghostscript_backend_import_error(testdir):
 
 def test_extraction_not_allowed(testdir):
     filename = os.path.join(testdir, "birdisland.pdf")
-    with pytest.raises(PDFTextExtractionNotAllowed):
+    with pytest.raises(PDFTextExtractionNotAllowed) as excinfo:
         camelot.read_pdf(filename, flavor="stream")
+    assert "Text extraction is not allowed" in str(excinfo.value)
