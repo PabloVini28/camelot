@@ -285,22 +285,18 @@ def test_cli_quiet(testdir):
         with warnings.catch_warnings():
             # the test should fail if any warning is thrown
             # warnings.simplefilter("error")
-            try:
-                result = runner.invoke(
-                    cli,
-                    [
-                        "stream",
-                        "--quiet",
-                        "--format",
-                        "csv",
-                        "--output",
-                        outfile,
-                        infile,
-                    ],
-                )
-            except Warning as e:
-                warning_text = str(e)
-                pytest.fail(f"Unexpected warning: {warning_text}")
+            result = runner.invoke(
+                cli,
+                [
+                    "stream",
+                    "--quiet",
+                    "--format",
+                    "csv",
+                    "--output",
+                    outfile,
+                    infile,
+                ],
+            )
 
 
 def test_cli_lattice_plot_type():
