@@ -286,14 +286,16 @@ def test_cli_quiet(testdir):
         infile = os.path.join(testdir, "empty.pdf")
         outfile = os.path.join(tempdir, "empty.csv")
         runner = CliRunner()
-        with warnings.catch_warnings():
-            # the test should fail if any warning is thrown
-            # warnings.simplefilter("error")
+        with warnings.catch_warnings(record=True) as caught:
+            warnings.simplefilter("always")
+            # --quiet takes a value (is_flag=False); passed bare, it swallowed
+            # "--format" and the command exited with a usage error.
             result = runner.invoke(
                 cli,
                 [
                     "stream",
                     "--quiet",
+                    "true",
                     "--format",
                     "csv",
                     "--output",
@@ -301,6 +303,8 @@ def test_cli_quiet(testdir):
                     infile,
                 ],
             )
+        assert result.exit_code == 0, result.output
+        assert [str(w.message) for w in caught] == []
 
 
 def test_cli_lattice_plot_type():
