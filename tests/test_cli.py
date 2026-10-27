@@ -247,59 +247,38 @@ def test_cli_password(testdir):
         assert output_error in str(result.exception)
 
 
-def test_cli_output_format(testdir):
-    with TemporaryDirectory() as tempdir:
-        infile = os.path.join(testdir, "health.pdf")
+@pytest.mark.parametrize(
+    "fmt,ext",
+    [("json", ".json"), ("excel", ".xlsx"), ("html", ".html"), ("markdown", ".md")],
+)
+def test_cli_output_format(testdir, tmp_path, fmt, ext):
+    infile = os.path.join(testdir, "health.pdf")
+    outfile = str(tmp_path / f"health{ext}")
+    runner = CliRunner()
+    result = runner.invoke(
+        cli,
+        ["stream", "--format", fmt, "--output", outfile, infile],
+    )
+    assert result.exit_code == 0, f"Output: {result.output}"
 
-        runner = CliRunner()
 
-        # json
-        outfile = os.path.join(tempdir, "health.json")
-        result = runner.invoke(
-            cli,
-            ["stream", "--format", "json", "--output", outfile, infile],
-        )
-        assert result.exit_code == 0, f"Output: {result.output}"
-
-        # excel
-        outfile = os.path.join(tempdir, "health.xlsx")
-        result = runner.invoke(
-            cli,
-            ["stream", "--format", "excel", "--output", outfile, infile],
-        )
-        assert result.exit_code == 0, f"Output: {result.output}"
-
-        # html
-        outfile = os.path.join(tempdir, "health.html")
-        result = runner.invoke(
-            cli,
-            ["stream", "--format", "html", "--output", outfile, infile],
-        )
-        assert result.exit_code == 0, f"Output: {result.output}"
-
-        # markdown
-        outfile = os.path.join(tempdir, "health.md")
-        result = runner.invoke(
-            cli,
-            ["stream", "--format", "markdown", "--output", outfile, infile],
-        )
-        assert result.exit_code == 0, f"Output: {result.output}"
-
-        # zip
-        outfile = os.path.join(tempdir, "health.csv")
-        result = runner.invoke(
-            cli,
-            [
-                "stream",
-                "--zip",
-                "--format",
-                "csv",
-                "--output",
-                outfile,
-                infile,
-            ],
-        )
-        assert result.exit_code == 0, f"Output: {result.output}"
+def test_cli_output_format_zip(testdir, tmp_path):
+    infile = os.path.join(testdir, "health.pdf")
+    outfile = str(tmp_path / "health.csv")
+    runner = CliRunner()
+    result = runner.invoke(
+        cli,
+        [
+            "stream",
+            "--zip",
+            "--format",
+            "csv",
+            "--output",
+            outfile,
+            infile,
+        ],
+    )
+    assert result.exit_code == 0, f"Output: {result.output}"
 
 
 def test_cli_quiet(testdir):
