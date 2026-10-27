@@ -18,8 +18,9 @@ def test_unknown_flavor(foo_pdf):
         "Unknown flavor specified."
         " Use either 'lattice', 'stream', 'network', 'hybrid', 'ml' or 'auto'"
     )
-    with pytest.raises(NotImplementedError, match=message):
+    with pytest.raises(NotImplementedError) as excinfo:
         camelot.read_pdf(foo_pdf, flavor="chocolate")
+    assert message in str(excinfo.value)
 
 
 def test_input_kwargs(foo_pdf):
