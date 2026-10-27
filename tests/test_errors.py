@@ -81,13 +81,14 @@ def test_bad_password(testdir):
 
 def test_stream_equal_length(foo_pdf):
     message = "Length of table_areas and columns should be equal"
-    with pytest.raises(ValueError, match=message):
+    with pytest.raises(ValueError) as excinfo:
         camelot.read_pdf(
             foo_pdf,
             flavor="stream",
             table_areas=["10,20,30,40"],
             columns=["10,20,30,40", "10,20,30,40"],
         )
+    assert message in str(excinfo.value)
 
 
 def test_image_warning(testdir):
