@@ -172,7 +172,6 @@ def test_pdfium_backend_import_error(testdir):
                 use_fallback=False,
             )
         except Exception as em:
-            print(em)
             assert message in str(em)
 
 
