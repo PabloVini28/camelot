@@ -66,8 +66,9 @@ def test_no_tables_found_warnings_suppressed(testdir):
 def test_no_password(testdir):
     filename = os.path.join(testdir, "health_protected.pdf")
     message = "File has not been decrypted"
-    with pytest.raises(Exception, match=message):
+    with pytest.raises(Exception) as excinfo:
         camelot.read_pdf(filename)
+    assert message in str(excinfo.value)
 
 
 def test_bad_password(testdir):
