@@ -1,4 +1,5 @@
 import sqlite3
+from contextlib import closing
 
 import pandas as pd
 import pytest
@@ -52,14 +53,11 @@ def test_export_sqlite(tables, tmp_path):
     out = tmp_path / "out.sqlite"
     tables.export(str(out), f="sqlite")
     assert out.exists()
-    conn = sqlite3.connect(str(out))
-    try:
+    with closing(sqlite3.connect(str(out))) as conn:
         names = [
             r[0]
             for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'")
         ]
-    finally:
-        conn.close()
     assert any("page-1" in n for n in names)
 
 
