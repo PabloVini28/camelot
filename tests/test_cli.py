@@ -1,3 +1,4 @@
+import importlib
 import importlib.metadata
 import os
 import sys
@@ -322,12 +323,17 @@ def test_cli_lattice_plot_type():
         assert result.exit_code != 0, f"Output: {result.output}"
 
 
-def test_import_error():
+def test_import_error(monkeypatch):
+    import camelot
+    import camelot.cli as original_cli
+
+    # camelot.cli is already imported, so load a fresh copy with matplotlib
+    # hidden instead of expecting the cached import itself to fail.
+    monkeypatch.setattr(camelot, "cli", original_cli)
     with mock.patch.dict(sys.modules, {"matplotlib": None}):
-        try:
-            from camelot.cli import cli
-        except ImportError:
-            assert cli._HAS_MPL is False
+        del sys.modules["camelot.cli"]
+        fresh_cli = importlib.import_module("camelot.cli")
+    assert fresh_cli._HAS_MPL is False
 
 
 def test_version_package_not_found():
