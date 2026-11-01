@@ -140,13 +140,13 @@ def test_lattice_unknown_backend(foo_pdf):
 
 
 def test_lattice_no_convert_method(foo_pdf):
-    class ConversionBackend:
-        pass
+    class BackendWithoutConvert:
+        """Backend stub propositalmente sem o método convert para testes de erro."""
 
     message = "must implement a 'convert' method"
     with pytest.raises(NotImplementedError, match=message):
         camelot.read_pdf(
-            foo_pdf, flavor="lattice", backend=ConversionBackend(), use_fallback=False
+            foo_pdf, flavor="lattice", backend=BackendWithoutConvert(), use_fallback=False
         )
 
 
