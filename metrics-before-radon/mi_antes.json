@@ -1,0 +1,218 @@
+{
+  "camelot/plotting.py": {
+    "mi": 51.708420077956035,
+    "rank": "A"
+  },
+  "camelot/__main__.py": {
+    "mi": 78.01508585192973,
+    "rank": "A"
+  },
+  "camelot/__init__.py": {
+    "mi": 100.0,
+    "rank": "A"
+  },
+  "camelot/image_processing.py": {
+    "mi": 34.32240223796929,
+    "rank": "A"
+  },
+  "camelot/utils.py": {
+    "mi": 9.99802656776578,
+    "rank": "B"
+  },
+  "camelot/core.py": {
+    "mi": 12.583858630955257,
+    "rank": "B"
+  },
+  "camelot/handlers.py": {
+    "mi": 48.42607956693331,
+    "rank": "A"
+  },
+  "camelot/cli.py": {
+    "mi": 26.455543280458155,
+    "rank": "A"
+  },
+  "camelot/io.py": {
+    "mi": 48.363075763302,
+    "rank": "A"
+  },
+  "camelot/parsers/ml.py": {
+    "mi": 38.90431735511113,
+    "rank": "A"
+  },
+  "camelot/parsers/base.py": {
+    "mi": 45.615356510637945,
+    "rank": "A"
+  },
+  "camelot/parsers/__init__.py": {
+    "mi": 100.0,
+    "rank": "A"
+  },
+  "camelot/parsers/network.py": {
+    "mi": 25.537925522188537,
+    "rank": "A"
+  },
+  "camelot/parsers/stream.py": {
+    "mi": 53.584781432432585,
+    "rank": "A"
+  },
+  "camelot/parsers/lattice.py": {
+    "mi": 43.868264990402764,
+    "rank": "A"
+  },
+  "camelot/parsers/hybrid.py": {
+    "mi": 55.60152197045074,
+    "rank": "A"
+  },
+  "camelot/backends/pdfium_backend.py": {
+    "mi": 79.01869389593776,
+    "rank": "A"
+  },
+  "camelot/backends/image_conversion.py": {
+    "mi": 70.29343256620987,
+    "rank": "A"
+  },
+  "camelot/backends/base.py": {
+    "mi": 100.0,
+    "rank": "A"
+  },
+  "camelot/backends/ghostscript_backend.py": {
+    "mi": 100.0,
+    "rank": "A"
+  },
+  "camelot/backends/__init__.py": {
+    "mi": 100.0,
+    "rank": "A"
+  },
+  "camelot/backends/poppler_backend.py": {
+    "mi": 89.62480824907622,
+    "rank": "A"
+  },
+  "tests/test_stack_contiguous.py": {
+    "mi": 57.703380425995306,
+    "rank": "A"
+  },
+  "tests/test_export.py": {
+    "mi": 62.024928212933254,
+    "rank": "A"
+  },
+  "tests/test_text_strip.py": {
+    "mi": 84.21652425874922,
+    "rank": "A"
+  },
+  "tests/data.py": {
+    "mi": 56.544112283729284,
+    "rank": "A"
+  },
+  "tests/conftest.py": {
+    "mi": 100.0,
+    "rank": "A"
+  },
+  "tests/test_vector_contours_joints.py": {
+    "mi": 64.31181909369155,
+    "rank": "A"
+  },
+  "tests/__init__.py": {
+    "mi": 100.0,
+    "rank": "A"
+  },
+  "tests/test_replace_text.py": {
+    "mi": 66.29422148547711,
+    "rank": "A"
+  },
+  "tests/test_lattice.py": {
+    "mi": 58.36611796400479,
+    "rank": "A"
+  },
+  "tests/test_network_overlap.py": {
+    "mi": 72.38336761657848,
+    "rank": "A"
+  },
+  "tests/test_stream.py": {
+    "mi": 47.74832754066641,
+    "rank": "A"
+  },
+  "tests/test_network.py": {
+    "mi": 64.16421875111982,
+    "rank": "A"
+  },
+  "tests/test_bytes_input.py": {
+    "mi": 56.830343371690425,
+    "rank": "A"
+  },
+  "tests/test_per_page.py": {
+    "mi": 70.52567132020815,
+    "rank": "A"
+  },
+  "tests/test_auto_flavor.py": {
+    "mi": 81.38096897150085,
+    "rank": "A"
+  },
+  "tests/test_cli.py": {
+    "mi": 40.86158471314708,
+    "rank": "A"
+  },
+  "tests/test_coalesce_collinear.py": {
+    "mi": 65.62591928180203,
+    "rank": "A"
+  },
+  "tests/test_common.py": {
+    "mi": 27.50128218006372,
+    "rank": "A"
+  },
+  "tests/test_copy_text_2d.py": {
+    "mi": 70.07174488311257,
+    "rank": "A"
+  },
+  "tests/test_image_conversion_backend.py": {
+    "mi": 100.0,
+    "rank": "A"
+  },
+  "tests/test_filter.py": {
+    "mi": 73.33349534993162,
+    "rank": "A"
+  },
+  "tests/test_comparison_bench.py": {
+    "mi": 63.19936938368128,
+    "rank": "A"
+  },
+  "tests/test_backends_base.py": {
+    "mi": 100.0,
+    "rank": "A"
+  },
+  "tests/test_errors.py": {
+    "mi": 52.635706391048025,
+    "rank": "A"
+  },
+  "tests/test_inmemory_render.py": {
+    "mi": 79.78843390036005,
+    "rank": "A"
+  },
+  "tests/test_find_lines_from_layout.py": {
+    "mi": 54.466653061317345,
+    "rank": "A"
+  },
+  "tests/test_ml_backend.py": {
+    "mi": 58.862382809546546,
+    "rank": "A"
+  },
+  "tests/test_utils.py": {
+    "mi": 48.64503386780249,
+    "rank": "A"
+  },
+  "tests/test_vector_engine_probe.py": {
+    "mi": 60.651557810513,
+    "rank": "A"
+  },
+  "tests/test_plotting.py": {
+    "mi": 100.0,
+    "rank": "A"
+  },
+  "tests/test_main_module.py": {
+    "mi": 90.46236882954626,
+    "rank": "A"
+  },
+  "tests/test_hybrid.py": {
+    "mi": 62.62550782680799,
+    "rank": "A"
+  }
+}
