@@ -53,12 +53,10 @@ def test_export_sqlite(tables, tmp_path):
     out = tmp_path / "out.sqlite"
     tables.export(str(out), f="sqlite")
     assert out.exists()
+    query = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name"
     with closing(sqlite3.connect(str(out))) as conn:
-        names = [
-            r[0]
-            for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'")
-        ]
-    assert any("page-1" in n for n in names)
+        rows = conn.execute(query).fetchall()
+    assert rows == [("page-1-table-1",), ("page-2-table-1",)]
 
 
 @pytest.mark.parametrize(
