@@ -1,0 +1,30 @@
+{
+  "etapa": "after",
+  "data": "2026-11-01T01:18:42",
+  "commit_projeto": "41bfcdbb66c46b4c534cd947f0d294476f5091bb",
+  "commit_tempy": "4c945d121d645b52fefb8f1b4f3e6caeec7c9095",
+  "arquivos_analisados": 19,
+  "arquivos_com_erro": 0,
+  "total_smells": 35,
+  "por_tipo": {
+    "Unknown Test": 34,
+    "Verbose Test": 1
+  },
+  "por_arquivo": {
+    "tests/test_plotting.py": 18,
+    "tests/test_image_conversion_backend.py": 4,
+    "tests/test_lattice.py": 2,
+    "tests/conftest.py": 1,
+    "tests/test_backends_base.py": 1,
+    "tests/test_coalesce_collinear.py": 1,
+    "tests/test_common.py": 1,
+    "tests/test_errors.py": 1,
+    "tests/test_find_lines_from_layout.py": 1,
+    "tests/test_per_page.py": 1,
+    "tests/test_stack_contiguous.py": 1,
+    "tests/test_stream.py": 1,
+    "tests/test_utils.py": 1,
+    "tests/test_vector_engine_probe.py": 1
+  },
+  "erros": []
+}
