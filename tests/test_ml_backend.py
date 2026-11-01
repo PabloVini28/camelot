@@ -152,9 +152,10 @@ def test_ml_read_pdf_surfaces_install_hint(foo_pdf):
     """End-to-end dispatch wiring: read_pdf -> handler -> ML parser -> hint."""
     import camelot
 
-    with pytest.raises(ImportError, match=r"camelot-py\[ml\]"):
+    with pytest.raises(ImportError) as excinfo:
         camelot.read_pdf(foo_pdf, flavor="ml")
 
+    assert "camelot-py[ml]" in str(excinfo.value)
 
 # --------------------------------------------------------------------------- #
 # OCR text-source plumbing (torch-free; engine not required)
