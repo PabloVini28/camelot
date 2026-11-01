@@ -141,9 +141,11 @@ def test_ml_constructs_without_torch():
 @pytest.mark.skipif(_HAS_TORCH, reason="torch installed; the import guard is moot")
 def test_ml_without_deps_raises_helpful_error():
     parser = MachineLearning()
-    with pytest.raises(ImportError, match=r"camelot-py\[ml\]"):
+
+    with pytest.raises(ImportError) as excinfo:
         parser._load_models()
 
+    assert "camelot-py[ml]" in str(excinfo.value)
 
 @pytest.mark.skipif(_HAS_TORCH, reason="torch installed; would fetch real models")
 def test_ml_read_pdf_surfaces_install_hint(foo_pdf):
