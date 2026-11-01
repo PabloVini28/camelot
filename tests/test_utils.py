@@ -280,5 +280,7 @@ def test_image_bbox_to_pdf_scales_axes_independently():
 def test_image_bbox_to_pdf_rejects_degenerate_input(
     bbox, image_size, pdf_size, message
 ):
-    with pytest.raises(ValueError, match=message):
+    with pytest.raises(ValueError) as excinfo:
         image_bbox_to_pdf(bbox, image_size, pdf_size)
+
+    assert message in str(excinfo.value)
