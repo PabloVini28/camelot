@@ -147,6 +147,7 @@ def test_ml_without_deps_raises_helpful_error():
 
     assert "camelot-py[ml]" in str(excinfo.value)
 
+
 @pytest.mark.skipif(_HAS_TORCH, reason="torch installed; would fetch real models")
 def test_ml_read_pdf_surfaces_install_hint(foo_pdf):
     """End-to-end dispatch wiring: read_pdf -> handler -> ML parser -> hint."""
@@ -156,6 +157,7 @@ def test_ml_read_pdf_surfaces_install_hint(foo_pdf):
         camelot.read_pdf(foo_pdf, flavor="ml")
 
     assert "camelot-py[ml]" in str(excinfo.value)
+
 
 # --------------------------------------------------------------------------- #
 # OCR text-source plumbing (torch-free; engine not required)
@@ -191,6 +193,7 @@ def test_ml_document_has_no_text_defers_to_ocr():
     ocr_off = MachineLearning(ocr=False)
     ocr_off.horizontal_text, ocr_off.images, ocr_off.page = [], [], 1
     assert ocr_off._document_has_no_text() is True
+
 
 @pytest.mark.skipif(
     importlib.util.find_spec("rapidocr_onnxruntime") is not None,

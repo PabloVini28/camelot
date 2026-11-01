@@ -60,6 +60,7 @@ def test_per_page_invalid_flavor_rejected(foo_pdf):
 
     assert "not one of" in str(excinfo.value)
 
+
 def test_per_page_auto_flavor_rejected(foo_pdf):
     """'auto' is only valid as the global flavor, not as a per-page override."""
     with pytest.raises(NotImplementedError) as excinfo:
@@ -67,11 +68,13 @@ def test_per_page_auto_flavor_rejected(foo_pdf):
 
     assert "not one of" in str(excinfo.value)
 
+
 def test_per_page_non_dict_value_rejected(foo_pdf):
     with pytest.raises(ValueError) as excinfo:
         camelot.read_pdf(foo_pdf, per_page={1: "not a dict"})
 
     assert "must be a dict of kwargs" in str(excinfo.value)
+
 
 def test_per_page_non_int_key_rejected(foo_pdf):
     with pytest.raises(ValueError, match="per_page keys must be page numbers"):

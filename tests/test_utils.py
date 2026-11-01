@@ -195,6 +195,7 @@ def test_bbox_from_str_normalises_corner_order():
     assert bbox_from_str("49,403,568,217") == (49, 217, 568, 403)
     assert bbox_from_str("49,217,568,403") == (49, 217, 568, 403)
 
+
 @pytest.mark.parametrize("bad", ["49,217,568,217", "100,100,100,400"])
 def test_bbox_from_str_rejects_zero_area(bad):
     # Zero width or height is the usual cause of the cryptic downstream
@@ -203,6 +204,7 @@ def test_bbox_from_str_rejects_zero_area(bad):
         bbox_from_str(bad)
 
     assert "zero width or height" in str(excinfo.value)
+
 
 def test_bbox_from_str_rejects_malformed():
     with pytest.raises(ValueError) as too_few:
@@ -214,6 +216,7 @@ def test_bbox_from_str_rejects_malformed():
         bbox_from_str("a,b,c,d")
 
     assert "must be numbers" in str(not_numbers.value)
+
 
 def test_image_bbox_to_pdf_300_dpi_letter_page():
     pdf_bbox = image_bbox_to_pdf((300, 600, 1800, 1500), (2550, 3300), (612, 792))
