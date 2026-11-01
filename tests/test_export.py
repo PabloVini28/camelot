@@ -86,9 +86,6 @@ def test_table_to_sqlite(tmp_path):
     t = _table([["x", "y"]], page=3, order=2)
     out = tmp_path / "t.sqlite"
     t.to_sqlite(str(out))
-    conn = sqlite3.connect(str(out))
-    try:
+    with closing(sqlite3.connect(str(out))) as conn:
         rows = conn.execute('SELECT * FROM "page-3-table-2"').fetchall()
-    finally:
-        conn.close()
     assert rows == [("x", "y")]
