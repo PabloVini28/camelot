@@ -218,11 +218,15 @@ def test_bbox_from_str_rejects_zero_area(bad):
     assert "zero width or height" in str(excinfo.value)
 
 def test_bbox_from_str_rejects_malformed():
-    with pytest.raises(ValueError, match="four"):
+    with pytest.raises(ValueError) as too_few:
         bbox_from_str("1,2,3")
-    with pytest.raises(ValueError, match="must be numbers"):
+
+    assert "four" in str(too_few.value)
+
+    with pytest.raises(ValueError) as not_numbers:
         bbox_from_str("a,b,c,d")
 
+    assert "must be numbers" in str(not_numbers.value)
 
 def test_image_bbox_to_pdf_300_dpi_letter_page():
     pdf_bbox = image_bbox_to_pdf((300, 600, 1800, 1500), (2550, 3300), (612, 792))
