@@ -192,7 +192,6 @@ def test_ml_document_has_no_text_defers_to_ocr():
     ocr_off.horizontal_text, ocr_off.images, ocr_off.page = [], [], 1
     assert ocr_off._document_has_no_text() is True
 
-
 @pytest.mark.skipif(
     importlib.util.find_spec("rapidocr_onnxruntime") is not None,
     reason="rapidocr installed; the import guard is moot",
@@ -200,5 +199,8 @@ def test_ml_document_has_no_text_defers_to_ocr():
 def test_ml_ocr_requires_engine_when_missing():
     """If rapidocr isn't installed, asking for OCR gives the [ocr] hint."""
     parser = MachineLearning(ocr=True)
-    with pytest.raises(ImportError, match=r"camelot-py\[ocr\]"):
+
+    with pytest.raises(ImportError) as excinfo:
         parser._get_ocr_engine()
+
+    assert "camelot-py[ocr]" in str(excinfo.value)
